@@ -8,6 +8,7 @@
 // Revision   Author    Description
 // 2015-08-02 JSP       Created
 // 2015-08-03 JSP       Fixed bug with popping last remaining node in popNode()
+// 2015-08-03 JSP       Added Javadoc comments to public methods
 //******************************************************************************
 
 package linkedlistdiscussion;
@@ -19,10 +20,19 @@ public class LinkedList<T> {
         head = null;
     }
     
+    /**
+     * Get the head node's value
+     * @return the head element of the list.
+     */
     public T getHead() {
         return get(0);
     }
     
+    /**
+     * Access an element in the linked list by index from 0 to size - 1.
+     * @param index The location of the element to get from the list.
+     * @return a selected element from the list specified by index.
+     */
     public T get(int index) {
         
         if(head == null) {
@@ -38,6 +48,10 @@ public class LinkedList<T> {
         return node.getValue();
     }
     
+    /**
+     * Get a count of all the elements in the linked list.
+     * @return Count of elements in list.
+     */
     public int size() {
         if(head == null) {
             return 0;
@@ -52,12 +66,20 @@ public class LinkedList<T> {
         return i;
     }
     
+    /**
+     * Add an element to the head (or front) of the list.
+     * @param element The data to add to the head of the list.
+     */
     public void addHead(T element) {
         Node<T> node = new Node<>(element);
         node.setNext(head);
         head = node;
     }
     
+    /**
+     * Add an element to the tail (or end) of the list.
+     * @param element The data to add to the end of the list.
+     */
     public void addTail(T element) {
         
         if(head == null) {
@@ -73,6 +95,12 @@ public class LinkedList<T> {
         }
     }
     
+    /**
+     * Insert an element into the list at the specified index location.
+     * @param index The location to add the new element.
+     * @param element The data to add to the list.
+     * @return true if the element was successfully added, otherwise false.
+     */
     public boolean add(int index, T element) {
         if(index < 0 || index > this.size()) {
             return false;
@@ -103,6 +131,10 @@ public class LinkedList<T> {
         return false;
     }
     
+    /**
+     * popHead will remove the head node from the list and return it.
+     * @return head element.
+     */
     public T popHead() {
         
         if(head == null) {
@@ -114,6 +146,10 @@ public class LinkedList<T> {
         return temp.getValue();
     }
     
+    /**
+     * popTail will remove the last node from the list and return it.
+     * @return tail element.
+     */
     public T popTail() {
         if(head == null) {
             return null;
@@ -135,7 +171,12 @@ public class LinkedList<T> {
         
         return tail.getValue();
     }
-    
+
+    /**
+     * popNode will remove the selected node from the list and return it.
+     * @param index The location of the element to pop and return.
+     * @return element at specified location.
+     */
     public T popNode(int index) {
         if(head == null || index < 0 || index >= this.size()) {
             return null;
