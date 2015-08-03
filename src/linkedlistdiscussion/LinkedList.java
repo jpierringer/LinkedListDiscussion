@@ -1,3 +1,15 @@
+// Copyright 2015 Kohler Co.  Unpublished and confidential.  All rights reserved.
+// Author: Jayson Pierringer
+// Linked List is a project for use during interviews to test the candidates
+// ability to explain a linked list and other data structures, create/modify
+// unit tests, troubleshoot bugs, and possibly extend existing code to implement
+// multithreading concepts or double linked list functionality.
+//******************************************************************************
+// Revision   Author    Description
+// 2015-08-02 JSP       Created
+// 2015-08-03 JSP       Fixed bug with popping last remaining node in popNode()
+//******************************************************************************
+
 package linkedlistdiscussion;
 
 public class LinkedList<T> {
@@ -67,6 +79,9 @@ public class LinkedList<T> {
         } else if (index == 0) {
             addHead(element);
             return true;
+        } else if (index == size()) {
+            addTail(element);
+            return true;
         }
         
         int i = 0;
@@ -122,20 +137,27 @@ public class LinkedList<T> {
     }
     
     public T popNode(int index) {
-        if(index < 0 || index >= this.size()) {
+        if(head == null || index < 0 || index >= this.size()) {
             return null;
         }
         
         int i = 0;
         Node<T> temp = head;
         Node<T> preTemp = head;
+        
         while(i < index && temp.getNext() != null) {
             preTemp = temp;
             temp = temp.getNext();
             i++;
         }
         
-        if(i == index) {
+        // There is only one element remaining in the list and we are popping it 
+        // off the list so set head to null since the list will be empty.
+        if(preTemp.equals(temp)) {
+            head = null;
+        }
+        
+        if(preTemp.equals(temp) && i == index) {
             preTemp.setNext(temp.getNext());
         }
         

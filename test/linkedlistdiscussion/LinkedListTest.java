@@ -1,3 +1,16 @@
+// Copyright 2015 Kohler Co.  Unpublished and confidential.  All rights reserved.
+// Author: Jayson Pierringer
+// Linked List is a project for use during interviews to test the candidates
+// ability to explain a linked list and other data structures, create/modify
+// unit tests, troubleshoot bugs, and possibly extend existing code to implement
+// multithreading concepts or double linked list functionality.
+//******************************************************************************
+// Revision   Author    Description
+// 2015-08-02 JSP       Created
+// 2015-08-03 JSP       Improved completeness of testPopHead and testPopTail
+//******************************************************************************
+
+
 package linkedlistdiscussion;
 
 import org.junit.Test;
@@ -22,7 +35,7 @@ public class LinkedListTest {
      */
     @Test
     public void testGetOnEmptyList() {
-        System.out.println("get");
+        System.out.println("getOnEmptyList");
         int index = 0;
         LinkedList<String> instance = new LinkedList<>();
         String expResult = null;
@@ -73,9 +86,10 @@ public class LinkedListTest {
         int index = 0;
         String element = "Added Element";
         LinkedList<String> instance = new LinkedList<>();
-        boolean expResult = true;
+
         boolean result = instance.add(index, element);
-        assertEquals(expResult, result);
+        
+        assertEquals(true, result);
     }
 
     /**
@@ -85,14 +99,15 @@ public class LinkedListTest {
     public void testAddNodeToMiddleOfList() {
         System.out.println("addNodeToMiddleOfList");
         LinkedList<Integer> instance = new LinkedList<>();
-        boolean expResult = true;
+
         instance.addHead(1);
         instance.addTail(2);
         instance.addTail(3);
         instance.addTail(4);
+        
         boolean result = instance.add(2, Integer.SIZE);
         
-        assertEquals(expResult, result);
+        assertEquals(true, result);
         assertEquals((long)instance.get(2), (long)Integer.SIZE);
     }
     
@@ -104,9 +119,16 @@ public class LinkedListTest {
         System.out.println("popHead");
         LinkedList<String> instance = new LinkedList<>();
         instance.addHead("First Element");
-        String expResult = "First Element";
-        String result = instance.popHead();
-        assertEquals(expResult, result);
+        instance.addTail("Second Element");
+        instance.addTail("Third Element");
+        instance.add(3, "Fourth Element");
+        
+        String result1 = instance.popHead();
+        String result2 = instance.popHead();
+        String result3 = instance.popHead();
+        String result4 = instance.popHead();
+        
+        assertEquals("Fourth Element", result4);
         assertEquals(null, instance.popHead());
     }
 
@@ -117,9 +139,19 @@ public class LinkedListTest {
     public void testPopTail() {
         System.out.println("popTail");
         LinkedList<String> instance = new LinkedList<>();
-        String expResult = null;
-        String result = instance.popTail();
-        assertEquals(expResult, result);
+        instance.addHead("First Element");
+        instance.addTail("Second Element");
+        instance.addTail("Third Element");
+        instance.add(3, "Fourth Element");
+        
+        String result1 = instance.popTail();
+        String result2 = instance.popTail();
+        String result3 = instance.popTail();
+        String result4 = instance.popTail();
+        String result5 = instance.popTail();
+        
+        assertEquals("First Element", result4);
+        assertEquals(null, result5);
     }
 
     /**
@@ -128,11 +160,18 @@ public class LinkedListTest {
     @Test
     public void testPopNode() {
         System.out.println("popNode");
-        int index = 0;
+        int index = 1;
         LinkedList<String> instance = new LinkedList<>();
-        String expResult = null;
-        String result = instance.popNode(index);
-        assertEquals(expResult, result);
+        instance.add(0, "First Node");
+        instance.addTail("Second Node");
+        
+        String result1 = instance.popNode(1);
+        String result2 = instance.popNode(0);
+        String result3 = instance.popNode(0);
+        
+        assertEquals("Second Node", result1);
+        assertEquals("First Node", result2);
+        assertEquals(null, result3);
     }
     
 }
