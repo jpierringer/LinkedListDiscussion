@@ -14,7 +14,7 @@
 package linkedlistdiscussion;
 
 public class LinkedList<T> {
-    Node<T> head;
+    protected Node<T> head;
     
     public LinkedList() {
         head = null;

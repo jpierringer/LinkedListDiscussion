@@ -48,13 +48,30 @@ public class LinkedListTest {
      */
     @Test
     public void testSizeOnEmptyList() {
-        System.out.println("size");
+        System.out.println("sizeOnEmptyList");
         LinkedList<String> instance = new LinkedList<>();
         int expResult = 0;
         int result = instance.size();
         assertEquals(expResult, result);
     }
 
+    /**
+     * Test of size method, of class LinkedList.
+     */
+    @Test
+    public void testSize() {
+        System.out.println("size");
+        LinkedList<Integer> instance = new LinkedList<>();
+        instance.addHead(1);
+        instance.addHead(2);
+        instance.addHead(3);
+        instance.popHead();
+        instance.addHead(3);
+        int expResult = 3;
+        int result = instance.size();
+        assertEquals(expResult, result);
+    }
+    
     /**
      * Test of addHead method, of class LinkedList.
      */
@@ -159,6 +176,7 @@ public class LinkedListTest {
      */
     @Test
     public void testPopNode() {
+        
         System.out.println("popNode");
         int index = 1;
         LinkedList<String> instance = new LinkedList<>();
@@ -173,5 +191,4 @@ public class LinkedListTest {
         assertEquals("First Node", result2);
         assertEquals(null, result3);
     }
-    
 }
