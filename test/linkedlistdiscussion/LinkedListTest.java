@@ -1,4 +1,4 @@
-// Copyright 2015 Kohler Co.  Unpublished and confidential.  All rights reserved.
+// Copyright 2015 Kohler Co.  All rights reserved.
 // Author: Jayson Pierringer
 // Linked List is a project for use during interviews to test the candidates
 // ability to explain a linked list and other data structures, create/modify
@@ -36,11 +36,16 @@ public class LinkedListTest {
     @Test
     public void testGetOnEmptyList() {
         System.out.println("getOnEmptyList");
-        int index = 0;
         LinkedList<String> instance = new LinkedList<>();
-        String expResult = null;
-        String result = instance.get(index);
-        assertEquals(expResult, result);
+        String result1 = instance.get(0);
+        String result2 = instance.get(-1);
+        instance.addHead("First Element");
+        String result3 = instance.get(0);
+        String result4 = instance.get(2);
+        assertEquals(null, result1);
+        assertEquals(null, result2);
+        assertEquals("First Element", result3);
+        assertEquals(null, result4);
     }
 
     /**
@@ -88,7 +93,7 @@ public class LinkedListTest {
      */
     @Test
     public void testAddNullTailToEmptyList() {
-        System.out.println("addTail");
+        System.out.println("addNullTailToEmptyList");
         String element = null;
         LinkedList<String> instance = new LinkedList<>();
         instance.addTail(element);
@@ -109,6 +114,36 @@ public class LinkedListTest {
         assertEquals(true, result);
     }
 
+    /**
+     * Test of add method, of class LinkedList.
+     */
+    @Test
+    public void testAddNodeWithBadIndex() {
+        System.out.println("addNodeWithBadIndex");
+        LinkedList<String> instance = new LinkedList<>();
+
+        //Test adding an element with a low index value
+        boolean result1 = instance.add(-1, "Fail 1");
+        
+        //Test adding an element with a high index value
+        boolean result2 = instance.add(1, "Fail 2");
+        
+        //Test adding an element with a good index value
+        boolean result3 = instance.add(0, "Success 1");
+
+        //Test adding an element with a good index value
+        boolean result4 = instance.add(2, "Fail 3");
+        
+        //Test adding an element with a good index value
+        boolean result5 = instance.add(1, "Success 2");
+        
+        assertEquals(false, result1);
+        assertEquals(false, result2);
+        assertEquals(true, result3);
+        assertEquals(false, result4);
+        assertEquals(true, result5);
+    }
+    
     /**
      * Test of add method, of class LinkedList.
      */
@@ -156,10 +191,13 @@ public class LinkedListTest {
     public void testPopTail() {
         System.out.println("popTail");
         LinkedList<String> instance = new LinkedList<>();
-        instance.addHead("First Element");
+        
+        String result0 = instance.popTail();
+        
+        instance.addTail("First Element");
         instance.addTail("Second Element");
         instance.addTail("Third Element");
-        instance.add(3, "Fourth Element");
+        instance.addTail("Fourth Element");
         
         String result1 = instance.popTail();
         String result2 = instance.popTail();
@@ -180,15 +218,23 @@ public class LinkedListTest {
         System.out.println("popNode");
         int index = 1;
         LinkedList<String> instance = new LinkedList<>();
+        
         instance.add(0, "First Node");
         instance.addTail("Second Node");
         
-        String result1 = instance.popNode(1);
-        String result2 = instance.popNode(0);
-        String result3 = instance.popNode(0);
+        //Bad indexes
+        String result0 = instance.popNode(-1);
+        String result01 = instance.popNode(2);
         
+        //Pop the tail node
+        String result1 = instance.popNode(1);
+        
+        //Pop the head node which will empty the list
+        String result2 = instance.popNode(0);
+        
+        assertEquals(null, result0);
+        assertEquals(null, result01);
         assertEquals("Second Node", result1);
         assertEquals("First Node", result2);
-        assertEquals(null, result3);
     }
 }

@@ -128,4 +128,15 @@ public class NodeTest {
 
     }
     
+    /**
+     * Test toString method of class Node.
+     */
+    @Test
+    public void testToString() {
+        System.out.println("toString");
+        
+        Node<String> instance = new Node<>("Node Name");
+        assertEquals("Node Name", instance.toString());
+    }
+    
 }

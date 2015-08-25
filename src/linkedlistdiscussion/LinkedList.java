@@ -1,4 +1,4 @@
-// Copyright 2015 Kohler Co.  Unpublished and confidential.  All rights reserved.
+// Copyright 2015 Kohler Co.  All rights reserved.
 // Author: Jayson Pierringer
 // Linked List is a project for use during interviews to test the candidates
 // ability to explain a linked list and other data structures, create/modify
@@ -45,7 +45,12 @@ public class LinkedList<T> {
             node = node.getNext();
             i++;
         }
-        return node.getValue();
+        
+        if(i == index) {
+            return node.getValue();
+        } else {
+            return null;
+        }
     }
     
     /**
@@ -93,8 +98,10 @@ public class LinkedList<T> {
             }
             temp.setNext(node);
         }
+        
+        
     }
-    
+
     /**
      * Insert an element into the list at the specified index location.
      * @param index The location to add the new element.
@@ -116,19 +123,17 @@ public class LinkedList<T> {
         Node<T> preTemp = head;
         Node<T> temp = head;
         
-        while((i < index) && (temp.getNext() != null)) {
+        while(i < index) {
             preTemp = temp;
             temp = temp.getNext();
             i++;
         }
-        
-        if(i >= index-1) {
-            Node<T> newNode = new Node<>(element);
-            newNode.setNext(preTemp.getNext());
-            preTemp.setNext(newNode);
-            return true;
-        }
-        return false;
+
+        Node<T> newNode = new Node<>(element);
+        newNode.setNext(preTemp.getNext());
+        preTemp.setNext(newNode);
+        return true;
+
     }
     
     /**
@@ -178,6 +183,8 @@ public class LinkedList<T> {
      * @return element at specified location.
      */
     public T popNode(int index) {
+        
+        
         if(head == null || index < 0 || index >= this.size()) {
             return null;
         }
@@ -186,21 +193,13 @@ public class LinkedList<T> {
         Node<T> temp = head;
         Node<T> preTemp = head;
         
-        while(i < index && temp.getNext() != null) {
+        while(i < index) {
             preTemp = temp;
             temp = temp.getNext();
             i++;
         }
         
-        // There is only one element remaining in the list and we are popping it 
-        // off the list so set head to null since the list will be empty.
-        if(preTemp.equals(temp)) {
-            head = null;
-        }
-        
-        if(preTemp.equals(temp) && i == index) {
-            preTemp.setNext(temp.getNext());
-        }
+        preTemp.setNext(temp.getNext());
         
         return temp.getValue();
     }

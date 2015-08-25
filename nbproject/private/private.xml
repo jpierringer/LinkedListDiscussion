@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/dev/hg/LinkedListDiscussion/src/linkedlistdiscussion/LinkedListDiscussion.java</file>
-            <file>file:/C:/dev/hg/LinkedListDiscussion/src/linkedlistdiscussion/Node.java</file>
-            <file>file:/C:/dev/hg/LinkedListDiscussion/src/linkedlistdiscussion/LinkedList.java</file>
+            <file>file:/C:/dev/git/LinkedListDiscussion/test/linkedlistdiscussion/LinkedListTest.java</file>
+            <file>file:/C:/dev/git/LinkedListDiscussion/src/linkedlistdiscussion/LinkedList.java</file>
+            <file>file:/C:/dev/git/LinkedListDiscussion/src/linkedlistdiscussion/LinkedListDiscussion.java</file>
+            <file>file:/C:/dev/git/LinkedListDiscussion/test/linkedlistdiscussion/NodeTest.java</file>
+            <file>file:/C:/dev/git/LinkedListDiscussion/src/linkedlistdiscussion/Node.java</file>
         </group>
     </open-files>
 </project-private>
