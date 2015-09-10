@@ -98,8 +98,6 @@ public class LinkedList<T> {
             }
             temp.setNext(node);
         }
-        
-        
     }
 
     /**
@@ -184,7 +182,6 @@ public class LinkedList<T> {
      */
     public T popNode(int index) {
         
-        
         if(head == null || index < 0 || index >= this.size()) {
             return null;
         }
@@ -200,8 +197,7 @@ public class LinkedList<T> {
         }
         
         preTemp.setNext(temp.getNext());
-        
+
         return temp.getValue();
     }
-
 }

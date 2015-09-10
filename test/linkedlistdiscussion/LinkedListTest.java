@@ -59,7 +59,7 @@ public class LinkedListTest {
         int result = instance.size();
         assertEquals(expResult, result);
     }
-
+    
     /**
      * Test of size method, of class LinkedList.
      */
@@ -150,17 +150,17 @@ public class LinkedListTest {
     @Test
     public void testAddNodeToMiddleOfList() {
         System.out.println("addNodeToMiddleOfList");
-        LinkedList<Integer> instance = new LinkedList<>();
+        LinkedList<Integer> testList = new LinkedList<>();
 
-        instance.addHead(1);
-        instance.addTail(2);
-        instance.addTail(3);
-        instance.addTail(4);
+        testList.addHead(1);
+        testList.addTail(2);
+        testList.addTail(3);
+        testList.addTail(4);
         
-        boolean result = instance.add(2, Integer.SIZE);
+        boolean result = testList.add(2, Integer.SIZE);
         
         assertEquals(true, result);
-        assertEquals((long)instance.get(2), (long)Integer.SIZE);
+        assertEquals((long)testList.get(2), (long)Integer.SIZE);
     }
     
     /**
@@ -169,19 +169,19 @@ public class LinkedListTest {
     @Test
     public void testPopHead() {
         System.out.println("popHead");
-        LinkedList<String> instance = new LinkedList<>();
-        instance.addHead("First Element");
-        instance.addTail("Second Element");
-        instance.addTail("Third Element");
-        instance.add(3, "Fourth Element");
+        LinkedList<String> testList = new LinkedList<>();
+        testList.addHead("First Element");
+        testList.addTail("Second Element");
+        testList.addTail("Third Element");
+        testList.add(3, "Fourth Element");
         
-        String result1 = instance.popHead();
-        String result2 = instance.popHead();
-        String result3 = instance.popHead();
-        String result4 = instance.popHead();
+        String result1 = testList.popHead();
+        String result2 = testList.popHead();
+        String result3 = testList.popHead();
+        String result4 = testList.popHead();
         
         assertEquals("Fourth Element", result4);
-        assertEquals(null, instance.popHead());
+        assertEquals(null, testList.popHead());
     }
 
     /**
@@ -190,20 +190,20 @@ public class LinkedListTest {
     @Test
     public void testPopTail() {
         System.out.println("popTail");
-        LinkedList<String> instance = new LinkedList<>();
+        LinkedList<String> testList = new LinkedList<>();
         
-        String result0 = instance.popTail();
+        String result0 = testList.popTail();
         
-        instance.addTail("First Element");
-        instance.addTail("Second Element");
-        instance.addTail("Third Element");
-        instance.addTail("Fourth Element");
+        testList.addTail("First Element");
+        testList.addTail("Second Element");
+        testList.addTail("Third Element");
+        testList.addTail("Fourth Element");
         
-        String result1 = instance.popTail();
-        String result2 = instance.popTail();
-        String result3 = instance.popTail();
-        String result4 = instance.popTail();
-        String result5 = instance.popTail();
+        String result1 = testList.popTail();
+        String result2 = testList.popTail();
+        String result3 = testList.popTail();
+        String result4 = testList.popTail();
+        String result5 = testList.popTail();
         
         assertEquals("First Element", result4);
         assertEquals(null, result5);
@@ -217,20 +217,20 @@ public class LinkedListTest {
         
         System.out.println("popNode");
         int index = 1;
-        LinkedList<String> instance = new LinkedList<>();
+        LinkedList<String> testList = new LinkedList<>();
         
-        instance.add(0, "First Node");
-        instance.addTail("Second Node");
+        testList.add(0, "First Node"); //Equivalent to addHead("First Node")
+        testList.addTail("Second Node"); //Equivalent to add(1, "Second Node");
         
         //Bad indexes
-        String result0 = instance.popNode(-1);
-        String result01 = instance.popNode(2);
+        String result0 = testList.popNode(-1);
+        String result01 = testList.popNode(2);
         
         //Pop the tail node
-        String result1 = instance.popNode(1);
+        String result1 = testList.popNode(1);
         
         //Pop the head node which will empty the list
-        String result2 = instance.popNode(0);
+        String result2 = testList.popNode(0);
         
         assertEquals(null, result0);
         assertEquals(null, result01);
